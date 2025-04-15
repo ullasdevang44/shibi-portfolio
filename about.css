@@ -1,0 +1,413 @@
+/* about.css - Enhanced Styles for the About Section */
+
+/* ---=== Global Reset ===--- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---=== Variables (Aligned with contact.css, education.css, projects.css, skills.css) ===--- */
+:root {
+    --gradient-primary: linear-gradient(135deg, #0066ff, #00ccff);
+    --primary-color: #0066ff;
+    --primary-hover: #0033cc;
+    --text-color-light: #1f2a44;
+    --text-color-dark: #f1f5f9;
+    --secondary-color-light: #5f6f94;
+    --secondary-color-dark: #a5b4fc;
+    --card-bg-light: rgba(255, 255, 255, 0.95);
+    --card-bg-dark: rgba(15, 23, 42, 0.9);
+    --input-border-light: #d4d8e2;
+    --input-border-dark: #475569;
+    --glow-light: rgba(0, 102, 255, 0.25);
+    --glow-dark: rgba(0, 204, 255, 0.35);
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --box-shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.08);
+    --box-shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.12);
+    --transition-speed: 0.3s;
+    --transition-timing: cubic-bezier(0.68, -0.05, 0.32, 1.05);
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --backdrop-blur: blur(12px);
+}
+
+/* ---=== Dark Mode Base ===--- */
+body.dark-mode {
+    --card-bg-light: var(--card-bg-dark);
+    --input-border-light: var(--input-border-dark);
+    --text-color-light: var(--text-color-dark);
+    --secondary-color-light: var(--secondary-color-dark);
+}
+
+/* ---=== Smooth Scrolling ===--- */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ---=== About Section Container ===--- */
+#about {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 16px;
+    position: relative;
+    overflow-x: hidden;
+    background: linear-gradient(180deg, rgba(245, 247, 255, 0.5) 0%, rgba(255, 255, 255, 0.8) 100%);
+}
+
+body.dark-mode #about {
+    background: linear-gradient(180deg, rgba(20, 40, 80, 0.5) 0%, rgba(10, 20, 40, 0.8) 100%);
+}
+
+/* ---=== About Section Content Layout ===--- */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    width: 100%;
+}
+
+/* ---=== About Text Block ===--- */
+.about-text {
+    flex: 1;
+    /* Natural look, no card styling */
+}
+
+.about-text h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+    color: var(--primary-color);
+    letter-spacing: -0.025em;
+}
+
+body.dark-mode .about-text h1 {
+    color: var(--primary-color);
+}
+
+.about-text h2.subtitle {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: var(--secondary-color-light);
+}
+
+body.dark-mode .about-text h2.subtitle {
+    color: var(--secondary-color-dark);
+}
+
+.about-text p {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    max-width: 600px;
+    color: var(--text-color-light);
+}
+
+body.dark-mode .about-text p {
+    color: var(--text-color-dark);
+}
+
+/* ---=== Social Links ===--- */
+.social-links {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.social-links a {
+    color: var(--text-color-light);
+    font-size: 1.8rem;
+    transition: color var(--transition-speed) var(--transition-timing),
+                transform var(--transition-speed) var(--transition-timing);
+}
+
+body.dark-mode .social-links a {
+    color: var(--text-color-dark);
+}
+
+.social-links a:hover,
+.social-links a:focus-visible {
+    color: var(--primary-color);
+    transform: scale(1.2);
+    outline: none;
+}
+
+body.dark-mode .social-links a:hover,
+body.dark-mode .social-links a:focus-visible {
+    color: var(--primary-color);
+}
+
+/* ---=== Call-to-Action Buttons ===--- */
+.about-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.about-buttons .cta-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 24px;
+    background: var(--gradient-primary);
+    color: #fff;
+    text-decoration: none;
+    border-radius: var(--border-radius-md);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 2px solid transparent;
+    transition: transform var(--transition-speed) var(--transition-timing),
+                box-shadow var(--transition-speed) var(--transition-timing),
+                background var(--transition-speed) var(--transition-timing);
+}
+
+.about-buttons .cta-button i {
+    margin-right: 8px;
+    font-size: 1rem;
+}
+
+body.dark-mode .about-buttons .cta-button {
+    background: var(--gradient-primary);
+}
+
+.about-buttons .cta-button:hover,
+.about-buttons .cta-button:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: var(--box-shadow-hover);
+    background: linear-gradient(135deg, #0088ff, #00eeff);
+    outline: none;
+}
+
+body.dark-mode .about-buttons .cta-button:hover,
+body.dark-mode .about-buttons .cta-button:focus-visible {
+    background: linear-gradient(135deg, #0088ff, #00eeff);
+}
+
+.about-buttons .cta-button.secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+body.dark-mode .about-buttons .cta-button.secondary {
+    color: var(--text-color-dark);
+    border-color: var(--text-color-dark);
+}
+
+.about-buttons .cta-button.secondary:hover,
+.about-buttons .cta-button.secondary:focus-visible {
+    background: var(--primary-color);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+body.dark-mode .about-buttons .cta-button.secondary:hover,
+body.dark-mode .about-buttons .cta-button.secondary:focus-visible {
+    background: var(--primary-color);
+}
+
+/* ---=== About Image Block ===--- */
+.about-image {
+    flex: 1;
+    text-align: center;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 360px; /* Restored original size */
+    height: auto;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-soft);
+    border: 2px solid var(--input-border-light);
+    transition: transform var(--transition-speed) var(--transition-timing),
+                box-shadow var(--transition-speed) var(--transition-timing);
+    object-fit: cover;
+}
+
+body.dark-mode .about-image img {
+    border-color: var(--input-border-dark);
+}
+
+.about-image img:hover,
+.about-image img:focus-visible {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: var(--box-shadow-hover);
+}
+
+/* ---=== Scroll Arrow ===--- */
+.scroll-arrow {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    text-decoration: none;
+    background: var(--card-bg-light);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--box-shadow-soft);
+    transition: transform var(--transition-speed) var(--transition-timing),
+                box-shadow var(--transition-speed) var(--transition-timing),
+                background var(--transition-speed) var(--transition-timing);
+}
+
+body.dark-mode .scroll-arrow {
+    background: var(--card-bg-dark);
+}
+
+.scroll-arrow:hover,
+.scroll-arrow:focus-visible {
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: var(--box-shadow-hover);
+    background: var(--gradient-primary);
+}
+
+.scroll-arrow i {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+body.dark-mode .scroll-arrow i {
+    color: var(--primary-color);
+}
+
+.scroll-arrow:hover i {
+    color: #fff;
+}
+
+body.dark-mode .scroll-arrow:hover i {
+    color: #fff;
+}
+
+/* ---=== Bounce Animation for Arrow ===--- */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ---=== Responsive About Section ===--- */
+@media (max-width: 767px) {
+    #about {
+        min-height: 100vh; /* Fill viewport */
+        padding: 48px 12px; /* Reduced but balanced */
+        display: flex; /* Center content */
+        align-items: center;
+    }
+
+    .about-content {
+        flex-direction: column;
+        gap: 32px;
+        padding: 0 16px;
+        max-width: 600px;
+        margin: auto; /* Center vertically */
+    }
+
+    .about-text {
+        order: 2;
+    }
+
+    .about-text h1 {
+        font-size: 2.2rem;
+        text-align: left;
+    }
+
+    .about-text h2.subtitle {
+        font-size: 1.3rem;
+        text-align: left;
+    }
+
+    .about-text p {
+        font-size: 0.95rem;
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .social-links {
+        justify-content: flex-start;
+        gap: 14px;
+    }
+
+    .social-links a {
+        font-size: 1.6rem;
+    }
+
+    .about-buttons {
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    .about-buttons .cta-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .about-buttons .cta-button i {
+        font-size: 0.9rem;
+    }
+
+    .about-image {
+        display: none;
+    }
+
+    .scroll-arrow {
+        bottom: 16px;
+    }
+}
+
+@media (min-width: 768px) {
+    .about-image {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    #about {
+        padding: 32px 8px;
+    }
+
+    .about-content {
+        gap: 24px;
+        padding: 0 12px;
+    }
+
+    .about-text h1 {
+        font-size: 2rem;
+    }
+
+    .about-text h2.subtitle {
+        font-size: 1.2rem;
+    }
+
+    .about-text p {
+        font-size: 0.9rem;
+    }
+
+    .social-links a {
+        font-size: 1.5rem;
+    }
+
+    .about-buttons .cta-button {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    .about-buttons .cta-button i {
+        font-size: 0.85rem;
+    }
+}

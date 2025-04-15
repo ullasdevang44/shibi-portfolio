@@ -1,0 +1,646 @@
+/* styles.css - Enhanced Base Styles, Variables, Navbar, Footer, and Global Patterns */
+
+/* ---=== CSS Variables ===--- */
+:root {
+    /* --- Light Mode Colors --- */
+    --bg-color-light: #f9fafb;
+    --text-color-light: #1e293b;
+    --text-secondary-light: #64748b;
+    --card-bg-light: rgba(255, 255, 255, 0.92);
+    --navbar-bg-light: rgba(255, 255, 255, 0.92);
+    --shadow-color-light: rgba(0, 0, 0, 0.06);
+    --primary-color: #0055ff;
+    --primary-hover: #0022cc;
+    --gradient-primary: linear-gradient(135deg, #0055ff, #00b7ff);
+    --input-bg-light: #f3f4f6;
+    --input-border-light: #d1d5db;
+    --link-hover-bg-light: rgba(0, 85, 255, 0.08);
+    --glow-light: rgba(0, 85, 255, 0.2);
+
+    /* --- Dark Mode Colors --- */
+    --bg-color-dark: #111827;
+    --text-color-dark: #f3f4f6;
+    --text-secondary-dark: #9ca3af;
+    --card-bg-dark: rgba(17, 24, 39, 0.88);
+    --navbar-bg-dark: rgba(17, 24, 39, 0.88);
+    --shadow-color-dark: rgba(0, 0, 0, 0.25);
+    --input-bg-dark: #1f2a44;
+    --input-border-dark: #4b5563;
+    --link-hover-bg-dark: rgba(0, 85, 255, 0.12);
+    --glow-dark: rgba(0, 183, 255, 0.3);
+
+    /* --- Scrollbar Colors --- */
+    --scrollbar-bg-light: #f3f4f6;
+    --scrollbar-thumb-light: #0055ff;
+    --scrollbar-bg-dark: #1f2a44;
+    --scrollbar-thumb-dark: #00b7ff;
+
+    /* --- Fonts & Spacing --- */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --section-padding: 96px 6%;
+    --navbar-height: 80px;
+    --border-radius-sm: 6px;
+    --border-radius-md: 10px;
+    --border-radius-lg: 14px;
+    --box-shadow-soft: 0 6px 20px var(--shadow-color-light);
+    --box-shadow-medium: 0 8px 28px var(--shadow-color-light);
+    --box-shadow-hover: 0 10px 36px var(--shadow-color-light);
+    --transition-speed: 0.25s;
+    --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+    --backdrop-blur: blur(10px);
+}
+
+/* ---=== Dark Mode Overrides ===--- */
+body.dark-mode {
+    --bg-color-light: var(--bg-color-dark); /* Override light bg with dark bg */
+    --text-color-light: var(--text-color-dark);
+    --text-secondary-light: var(--text-secondary-dark);
+    --card-bg-light: var(--card-bg-dark);
+    --navbar-bg-light: var(--navbar-bg-dark);
+    --shadow-color-light: var(--shadow-color-dark);
+    --input-bg-light: var(--input-bg-dark);
+    --input-border-light: var(--input-border-dark);
+    --link-hover-bg-light: var(--link-hover-bg-dark);
+    --glow-light: var(--glow-dark);
+    --scrollbar-bg-light: var(--scrollbar-bg-dark);
+    --scrollbar-thumb-light: var(--scrollbar-thumb-dark);
+
+    /* Update box shadows to use the dark shadow color */
+    --box-shadow-soft: 0 6px 20px var(--shadow-color-dark);
+    --box-shadow-medium: 0 8px 28px var(--shadow-color-dark);
+    --box-shadow-hover: 0 10px 36px var(--shadow-color-dark);
+}
+
+/* ---=== General Reset & Base Styles ===--- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-primary);
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb-light) var(--scrollbar-bg-light);
+}
+
+body {
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+    transition: background-color var(--transition-speed) var(--transition-timing),
+                color var(--transition-speed) var(--transition-timing);
+    line-height: 1.75;
+    font-size: 1rem;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent horizontal scrollbars caused by animations if needed */
+    /* overflow-x: hidden; */
+}
+
+/* Added: Prevent body scroll when mobile nav is open */
+body.nav-open {
+    overflow: hidden;
+}
+
+body.dark-mode {
+    /* These styles are applied when body has .dark-mode class */
+    /* Variables handle the color changes via the override block above */
+    /* Explicit scrollbar color for dark mode */
+    scrollbar-color: var(--scrollbar-thumb-dark) var(--scrollbar-bg-dark);
+}
+
+/* ---=== Custom Scrollbar (WebKit) ===--- */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-bg-light);
+    border-radius: var(--border-radius-sm);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-light);
+    border-radius: var(--border-radius-sm);
+    box-shadow: 0 0 6px var(--glow-light);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-hover);
+}
+/* Dark mode scrollbar styles (moved from body.dark-mode for clarity) */
+body.dark-mode ::-webkit-scrollbar-track {
+    background: var(--scrollbar-bg-dark);
+}
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-dark);
+    box-shadow: 0 0 6px var(--glow-dark);
+}
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-hover); /* Keep consistent hover color */
+}
+
+/* ---=== Navbar ===--- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 6%;
+    height: var(--navbar-height);
+    background: var(--navbar-bg-light);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur); /* Safari */
+    box-shadow: var(--box-shadow-soft);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0; /* Added for robustness */
+    z-index: 1000;
+    transition: background var(--transition-speed) var(--transition-timing),
+                box-shadow var(--transition-speed) var(--transition-timing);
+}
+
+.logo {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) var(--transition-timing),
+                transform var(--transition-speed) var(--transition-timing),
+                opacity var(--transition-speed) var(--transition-timing);
+}
+.logo:hover,
+.logo:focus {
+    color: var(--primary-hover);
+    transform: scale(1.03);
+    opacity: 0.9;
+    outline: none; /* Or style focus outline appropriately */
+}
+/* Add a simple focus style if needed */
+.logo:focus-visible {
+     outline: 2px solid var(--primary-color);
+     outline-offset: 2px;
+     border-radius: var(--border-radius-sm); /* Optional */
+}
+
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.nav-links li {
+    margin: 0 24px; /* Space between links */
+}
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color-light); /* Uses variable, adapts to dark mode */
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 10px 6px; /* Clickable area */
+    position: relative;
+    transition: color var(--transition-speed) var(--transition-timing),
+                transform var(--transition-speed) var(--transition-timing),
+                opacity var(--transition-speed) var(--transition-timing);
+}
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1.5px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    border-radius: 1px;
+    box-shadow: 0 0 5px var(--glow-light); /* Uses variable, adapts */
+    transition: width var(--transition-speed) var(--transition-timing),
+                box-shadow var(--transition-speed) var(--transition-timing);
+}
+/* No explicit dark mode needed for a::after due to variable usage */
+.nav-links a:hover,
+.nav-links a:focus {
+    color: var(--primary-color);
+    transform: translateY(-1px);
+    opacity: 0.95;
+    outline: none;
+}
+.nav-links a:hover::after,
+.nav-links a:focus::after {
+    width: 48%; /* Animate underline width */
+}
+/* Add focus-visible for better accessibility */
+.nav-links a:focus-visible {
+    color: var(--primary-color);
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px; /* Adjust spacing */
+    border-radius: var(--border-radius-sm); /* Optional */
+}
+/* Ensure focus underline appears */
+.nav-links a:focus-visible::after {
+    width: 48%;
+}
+
+.controls-container {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.4rem;
+    color: var(--text-secondary-light); /* Adapts */
+    transition: color var(--transition-speed) var(--transition-timing),
+                transform var(--transition-speed) var(--transition-timing);
+    padding: 10px; /* Clickable area */
+    border-radius: var(--border-radius-sm);
+    line-height: 1; /* Align icon better */
+}
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+    color: var(--primary-color);
+    transform: scale(1.15);
+    outline: none;
+    background-color: var(--link-hover-bg-light); /* Subtle background on hover/focus */
+}
+.theme-toggle .fa-moon { display: none; } /* Hide moon by default */
+body.dark-mode .theme-toggle .fa-sun { display: none; } /* Hide sun in dark mode */
+body.dark-mode .theme-toggle .fa-moon { display: inline; } /* Show moon in dark mode */
+body:not(.dark-mode) .theme-toggle .fa-sun { display: inline; } /* Show sun in light mode */
+
+.hamburger {
+    display: none; /* Hidden by default, shown in media query */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 26px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    padding: 0; /* Remove default button padding */
+    z-index: 1001; /* Ensure it's above nav links */
+    transition: transform var(--transition-speed) var(--transition-timing); /* Add transition for hover */
+}
+.hamburger span {
+    display: block; /* Ensure spans behave predictably */
+    width: 26px;
+    height: 2.5px;
+    /* Use gradient for bars */
+    background: var(--gradient-primary);
+    border-radius: 2px;
+    transition: transform var(--transition-speed) var(--transition-timing),
+                opacity var(--transition-speed) var(--transition-timing),
+                background var(--transition-speed) var(--transition-timing); /* Added bg transition */
+    transform-origin: center; /* Rotate around center */
+}
+/* Hamburger Active State (X shape) */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0); /* Optional: animate width out */
+}
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+.hamburger:hover {
+    transform: scale(1.08);
+}
+.hamburger:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+    border-radius: var(--border-radius-sm); /* Match other focus styles */
+}
+
+/* ---=== General Section Structure & Titles ===--- */
+.section {
+    padding: var(--section-padding);
+    position: relative;
+    overflow-x: hidden; /* Prevent horizontal scroll from elements */
+}
+/* Add padding-top to the first section after the fixed navbar */
+/* You can use an ID or a class like .first-section */
+#about, .first-section {
+    padding-top: calc(var(--section-padding) + var(--navbar-height));
+}
+h2.section-title {
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 56px;
+    text-align: center;
+    color: var(--text-color-light); /* Adapts */
+    position: relative;
+    padding-bottom: 18px;
+}
+h2.section-title::after {
+    content: '';
+    position: absolute;
+    width: 72px;
+    height: 3px;
+    background: var(--gradient-primary);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 1px;
+}
+
+/* ---=== Form Status ===--- */
+.form-status {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    transition: opacity var(--transition-speed) var(--transition-timing);
+    /* display: none; /* Controlled by JS */
+    opacity: 0; /* Use opacity for smoother transitions */
+    height: 0; /* Collapse space when hidden */
+    overflow: hidden;
+    text-align: center;
+}
+.form-status.visible { /* Add .visible class via JS */
+    opacity: 1;
+    height: auto; /* Or specific height if needed */
+}
+.form-status.success {
+    color: #22c55e; /* Green-500 */
+}
+.form-status.error {
+    color: #ef4444; /* Red-500 */
+}
+.form-status.processing {
+    color: var(--text-secondary-light); /* Adapts */
+}
+/* No dark mode needed for processing due to variable */
+
+/* ---=== Footer ===--- */
+footer {
+    text-align: center;
+    padding: 56px 20px;
+    margin-top: 80px;
+    background: var(--card-bg-light); /* Adapts */
+    border-top: 1px solid var(--input-border-light); /* Adapts */
+    backdrop-filter: var(--backdrop-blur);
+     -webkit-backdrop-filter: var(--backdrop-blur); /* Safari */
+    font-size: 0.95rem;
+    color: var(--text-secondary-light); /* Adapts */
+    transition: background var(--transition-speed) var(--transition-timing),
+                color var(--transition-speed) var(--transition-timing),
+                border-color var(--transition-speed) var(--transition-timing);
+}
+.footer-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin-bottom: 20px;
+}
+.footer-socials a {
+    color: var(--text-secondary-light); /* Adapts */
+    font-size: 1.5rem;
+    transition: color var(--transition-speed) var(--transition-timing),
+                transform var(--transition-speed) var(--transition-timing),
+                opacity var(--transition-speed) var(--transition-timing);
+    display: inline-block; /* Prevents layout shift on transform */
+}
+.footer-socials a:hover,
+.footer-socials a:focus {
+    color: var(--primary-color);
+    transform: scale(1.15);
+    opacity: 0.95;
+    outline: none;
+}
+/* Add focus-visible for accessibility */
+.footer-socials a:focus-visible {
+    color: var(--primary-color);
+    transform: scale(1.15); /* Keep consistent */
+    opacity: 0.95;
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+    border-radius: 50%; /* Make outline circular for icons */
+}
+footer p {
+    font-size: 0.9rem;
+    font-weight: 400;
+    opacity: 0.85;
+}
+
+/* ---=== Responsive Design ===--- */
+
+/* --- Tablet --- */
+@media (max-width: 1024px) {
+    :root {
+        --section-padding: 80px 5%;
+        --navbar-height: 72px;
+    }
+    .navbar {
+        padding: 0 5%;
+    }
+    .nav-links li {
+        margin: 0 20px; /* Slightly reduce space */
+    }
+    h2.section-title {
+        font-size: 2.4rem;
+    }
+}
+
+/* --- Mobile --- */
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 64px 4%;
+        --navbar-height: 64px;
+    }
+    .navbar {
+        padding: 0 4%;
+    }
+    .logo {
+        font-size: 1.7rem;
+        z-index: 1002; /* Ensure logo is above nav links when closed */
+        position: relative; /* Needed for z-index */
+    }
+
+    /* --- Mobile Navigation Menu Styles --- */
+    .nav-links {
+        /* Structure & Positioning */
+        display: flex; /* Keep flex for alignment */
+        flex-direction: column;
+        align-items: center; /* Center links vertically */
+        position: fixed;
+        top: 0; /* Start from the very top */
+        left: 0;
+        width: 100%;
+        height: 100vh; /* Full viewport height */
+        /* NEW: Allow scrolling within the menu if content overflows */
+        max-height: 100vh;
+        overflow-y: auto;
+        padding-top: calc(var(--navbar-height) + 32px); /* Add space below navbar + extra */
+        padding-bottom: 32px;
+
+        /* Appearance */
+        background: var(--card-bg-light); /* Adapts via variable override */
+        backdrop-filter: var(--backdrop-blur);
+         -webkit-backdrop-filter: var(--backdrop-blur); /* Safari */
+        box-shadow: var(--box-shadow-medium); /* Adapts */
+        border: none; /* Remove bottom border, let shadow handle separation */
+
+        /* Initial State & Transition (for the whole menu container) */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px); /* Start slightly above */
+        transition: opacity var(--transition-speed) var(--transition-timing),
+                    visibility 0s linear var(--transition-speed), /* Hide after animation */
+                    transform var(--transition-speed) var(--transition-timing);
+        z-index: 999; /* Below navbar controls but above page content */
+    }
+
+    .nav-links.active {
+        /* Active State & Transition (for the whole menu container) */
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        transition: opacity var(--transition-speed) var(--transition-timing),
+                    visibility 0s linear 0s, /* Show immediately */
+                    transform var(--transition-speed) var(--transition-timing);
+    }
+
+    /* Individual Link Item Styling & Animation */
+    .nav-links li {
+        margin: 10px 0; /* Spacing between links */
+        width: 80%; /* Control link width */
+        max-width: 300px; /* Optional max width */
+        text-align: center;
+
+        /* Initial State & Transition (for individual items) */
+        opacity: 0;
+        transform: translateY(-12px);
+        transition: opacity calc(var(--transition-speed) * 1.2) var(--transition-timing), /* Slightly longer fade */
+                    transform calc(var(--transition-speed) * 1.2) var(--transition-timing);
+    }
+
+    /* Staggered Animation for Links when Menu Opens */
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    /* Delay each item - Adjust timing as needed */
+    .nav-links.active li:nth-child(1) { transition-delay: 0.08s; }
+    .nav-links.active li:nth-child(2) { transition-delay: 0.16s; }
+    .nav-links.active li:nth-child(3) { transition-delay: 0.24s; }
+    .nav-links.active li:nth-child(4) { transition-delay: 0.32s; }
+    .nav-links.active li:nth-child(5) { transition-delay: 0.40s; }
+    /* Add more if you have more links */
+
+    /* Link Styling within Mobile Menu */
+    .nav-links a {
+        font-size: 1.25rem; /* Larger font size for mobile */
+        padding: 14px 20px; /* Generous tap target */
+        display: block; /* Make the whole area clickable */
+        width: 100%;
+        border-radius: var(--border-radius-md);
+        transition: background-color var(--transition-speed) var(--transition-timing),
+                    color var(--transition-speed) var(--transition-timing),
+                    transform var(--transition-speed) var(--transition-timing);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+        background-color: var(--link-hover-bg-light); /* Adapts */
+        color: var(--primary-color);
+        transform: scale(1.03); /* Subtle scale on hover/focus */
+        /* Keep outline none as focus-visible will handle it */
+        outline: none;
+    }
+
+    .nav-links a:focus-visible {
+        /* Explicit focus style for mobile links */
+        background-color: var(--link-hover-bg-light); /* Adapts */
+        color: var(--primary-color);
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+
+    .nav-links a::after {
+        display: none; /* Hide desktop underline */
+    }
+
+    /* Show Hamburger */
+    .hamburger {
+        display: flex; /* Show the hamburger button */
+        position: relative; /* Needed for z-index */
+        z-index: 1002; /* Ensure hamburger is above nav links */
+    }
+
+    /* Controls container needs higher z-index too */
+     .controls-container {
+        position: relative; /* Needed for z-index */
+        z-index: 1002;
+    }
+
+    /* General Mobile Adjustments */
+    h2.section-title {
+        font-size: 2.2rem;
+        margin-bottom: 48px;
+    }
+    .footer-socials {
+        gap: 24px; /* Reduce gap slightly */
+    }
+}
+
+/* --- Smaller Mobile --- */
+@media (max-width: 480px) {
+    :root {
+        --section-padding: 56px 3%;
+        --navbar-height: 60px;
+    }
+    .navbar {
+        padding: 0 3%;
+    }
+    .logo {
+        font-size: 1.6rem;
+    }
+
+    /* Mobile Nav Link Adjustments */
+    .nav-links a {
+        font-size: 1.15rem; /* Slightly smaller font */
+        padding: 12px 16px;
+    }
+
+    /* Hamburger Icon Size Adjustment */
+    .hamburger {
+        width: 28px;
+        height: 24px;
+    }
+    .hamburger span {
+        width: 24px;
+        height: 2px; /* Thinner lines */
+    }
+    /* Adjust transform values for thinner lines */
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* General Smaller Mobile Adjustments */
+    h2.section-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+    footer {
+        padding: 40px 16px;
+        font-size: 0.9rem;
+    }
+    .footer-socials a {
+        font-size: 1.4rem; /* Adjust icon size */
+    }
+}

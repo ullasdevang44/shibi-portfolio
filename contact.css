@@ -1,0 +1,558 @@
+/* contact.css - Enhanced Styles for the Contact Section */
+
+/* ---=== Global Reset (Aligned with styles.css) ===--- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---=== Variables (Refined for Consistency and Modern Aesthetic) ===--- */
+:root {
+    --gradient-primary: linear-gradient(135deg, #0066ff, #00ccff); /* Softer gradient */
+    --primary-color: #0066ff; /* Modern blue */
+    --primary-hover: #0033cc; /* Darker hover */
+    --text-color-light: #1f2a44; /* Soft navy for readability */
+    --text-color-dark: #f1f5f9; /* Bright for dark mode */
+    --text-secondary-light: #5f6f94; /* Neutral secondary */
+    --text-secondary-dark: #a5b4fc; /* Light for dark mode */
+    --card-bg-light: rgba(255, 255, 255, 0.95); /* Glassmorphism */
+    --card-bg-dark: rgba(15, 23, 42, 0.9); /* Dark transparency */
+    --input-bg-light: #f8fafc; /* Clean input background */
+    --input-bg-dark: #1e293b; /* Dark input contrast */
+    --input-border-light: #d4d8e2; /* Soft border */
+    --input-border-dark: #475569; /* Dark mode border */
+    --placeholder-color-light: #9ca3af; /* Modern placeholder */
+    --placeholder-color-dark: #cbd5e1; /* Readable dark mode */
+    --glow-light: rgba(0, 102, 255, 0.25); /* Soft glow */
+    --glow-dark: rgba(0, 204, 255, 0.35); /* Bright dark glow */
+    --border-radius-sm: 8px; /* Tight modern radius */
+    --border-radius-md: 12px; /* Balanced */
+    --border-radius-lg: 16px; /* For larger elements */
+    --box-shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.08); /* Soft shadow */
+    --box-shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.12); /* Dynamic hover */
+    --transition-speed: 0.3s; /* Smooth transitions */
+    --transition-timing: cubic-bezier(0.68, -0.05, 0.32, 1.05); /* Elastic feel */
+    --success-text: #065f46; /* Rich green */
+    --success-bg: #d1fae5; /* Light green success */
+    --success-border: #6ee7b7; /* Vibrant border */
+    --error-text: #9f1239; /* Soft red */
+    --error-bg: #ffe4e6; /* Light error background */
+    --error-border: #f9a8d4; /* Subtle pink border */
+    --processing-text-light: var(--text-color-light);
+    --processing-bg-light: #e5e7eb; /* Neutral processing */
+    --processing-border-light: var(--primary-color);
+    --processing-text-dark: var(--text-color-dark);
+    --processing-bg-dark: #374151; /* Dark processing */
+    --processing-border-dark: #60a5fa; /* Distinct dark primary */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Modern font */
+    --backdrop-blur: blur(12px); /* Glassmorphism effect */
+}
+
+/* ---=== Contact Section Layout ===--- */
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Balanced ratio */
+    gap: 48px; /* Tighter spacing */
+    max-width: 1200px; /* Wider for modern screens */
+    margin: 0 auto;
+    padding: 40px 24px; /* Breathing room */
+    align-items: start;
+}
+
+/* ---=== Contact Info Block (Left Side) ===--- */
+.contact-info {
+    min-width: 280px;
+    padding: 24px;
+    background: var(--card-bg-light);
+    border-radius: var(--border-radius-md);
+    backdrop-filter: var(--backdrop-blur); /* Glass effect */
+    box-shadow: var(--box-shadow-soft);
+    transition: transform var(--transition-speed) var(--transition-timing),
+                box-shadow var(--transition-speed) var(--transition-timing);
+}
+
+body.dark-mode .contact-info {
+    background: var(--card-bg-dark);
+}
+
+.contact-info:hover {
+    transform: translateY(-4px); /* Subtle lift */
+    box-shadow: var(--box-shadow-hover);
+}
+
+.contact-info h2.section-title {
+    text-align: center; /* Center text for "Get In Touch" */
+    margin-bottom: 48px; /* Space for underline */
+    font-size: 2.25rem; /* Elegant size */
+    font-weight: 700;
+    color: var(--text-color-light);
+    position: relative;
+    letter-spacing: -0.025em; /* Tight tracking */
+    padding-bottom: 12px; /* Space for underline */
+}
+
+body.dark-mode .contact-info h2.section-title {
+    color: var(--text-color-dark);
+}
+
+.contact-info h2.section-title::after {
+    content: '';
+    display: block;
+    width: 64px; /* Balanced length */
+    height: 3px; /* Thinner line */
+    background: var(--gradient-primary);
+    position: absolute;
+    bottom: 0; /* Align with padding */
+    left: 50%; /* Center underline */
+    transform: translateX(-50%); /* Perfect centering */
+    border-radius: 2px;
+    transition: width var(--transition-speed) var(--transition-timing);
+}
+
+.contact-info h2.section-title:hover::after {
+    width: 80px; /* Subtle growth on hover */
+}
+
+/* Alternative: Left-aligned text and underline (uncomment to use) */
+/*
+.contact-info h2.section-title {
+    text-align: left;
+    margin-bottom: 40px;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--text-color-light);
+    position: relative;
+    letter-spacing: -0.025em;
+    padding-bottom: 10px;
+}
+body.dark-mode .contact-info h2.section-title {
+    color: var(--text-color-dark);
+}
+.contact-info h2.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-primary);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 2px;
+    transition: width var(--transition-speed) var(--transition-timing);
+}
+.contact-info h2.section-title:hover::after {
+    width: 72px;
+}
+*/
+
+/* Contact Methods List */
+.contact-methods {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Tight spacing */
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary-light);
+    text-decoration: none;
+    padding: 12px;
+    border-radius: var(--border-radius-sm);
+    transition: background var(--transition-speed) var(--transition-timing),
+                color var(--transition-speed) var(--transition-timing),
+                transform var(--transition-speed) var(--transition-timing);
+}
+
+body.dark-mode .contact-item {
+    color: var(--text-secondary-dark);
+}
+
+.contact-item:hover,
+.contact-item:focus-visible {
+    background: var(--input-bg-light);
+    color: var(--primary-color);
+    transform: translateX(4px); /* Subtle movement */
+    outline: none;
+}
+
+body.dark-mode .contact-item:hover,
+body.dark-mode .contact-item:focus-visible {
+    background: var(--input-bg-dark);
+}
+
+.contact-item i {
+    font-size: 1.5rem;
+    width: 28px;
+    text-align: center;
+    color: var(--primary-color);
+    transition: transform var(--transition-speed) var(--transition-timing);
+}
+
+.contact-item:hover i,
+.contact-item:focus-visible i {
+    transform: scale(1.15); /* Smaller scale */
+}
+
+.contact-item span {
+    font-weight: 500;
+    letter-spacing: 0.025em;
+}
+
+/* ---=== Contact Form Block (Right Side) ===--- */
+.contact-form {
+    min-width: 320px;
+    padding: 32px;
+    background: var(--card-bg-light);
+    border-radius: var(--border-radius-md);
+    backdrop-filter: var(--backdrop-blur);
+    box-shadow: var(--box-shadow-soft);
+    transition: transform var(--transition-speed) var(--transition-timing),
+                box-shadow var(--transition-speed) var(--transition-timing);
+}
+
+body.dark-mode .contact-form {
+    background: var(--card-bg-dark);
+}
+
+.contact-form:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.contact-form h3 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-color-light);
+    margin-bottom: 24px;
+    text-align: left; /* Consistent alignment */
+    letter-spacing: -0.025em;
+}
+
+body.dark-mode .contact-form h3 {
+    color: var(--text-color-dark);
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contact-form form.submitting {
+    pointer-events: none;
+    opacity: 0.65;
+    transition: opacity var(--transition-speed) var(--transition-timing);
+}
+
+.contact-form .form-group {
+    position: relative;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 14px 16px;
+    border: 1px solid var(--input-border-light);
+    border-radius: var(--border-radius-sm);
+    background: var(--input-bg-light);
+    font-size: 0.95rem;
+    font-family: var(--font-primary);
+    color: var(--text-color-light);
+    transition: border-color var(--transition-speed) var(--transition-timing),
+                box-shadow var(--transition-speed) var(--transition-timing),
+                background var(--transition-speed) var(--transition-timing);
+    outline: none;
+    width: 100%;
+}
+
+body.dark-mode .contact-form input,
+body.dark-mode .contact-form textarea {
+    background: var(--input-bg-dark);
+    border-color: var(--input-border-dark);
+    color: var(--text-color-dark);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--placeholder-color-light);
+    font-weight: 400;
+    transition: opacity var(--transition-speed) var(--transition-timing);
+}
+
+body.dark-mode .contact-form input::placeholder,
+body.dark-mode .contact-form textarea::placeholder {
+    color: var(--placeholder-color-dark);
+}
+
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--glow-light);
+}
+
+body.dark-mode .contact-form input:focus-visible,
+body.dark-mode .contact-form textarea:focus-visible {
+    box-shadow: 0 0 0 3px var(--glow-dark);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.5;
+}
+
+.contact-form button[type="submit"] {
+    padding: 14px 28px;
+    background: var(--gradient-primary);
+    background-size: 200% auto;
+    color: #ffffff;
+    border: none;
+    border-radius: var(--border-radius-md);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    box-shadow: var(--box-shadow-soft);
+    transition: transform var(--transition-speed) var(--transition-timing),
+                box-shadow var(--transition-speed) var(--transition-timing),
+                background-position var(--transition-speed) var(--transition-timing);
+}
+
+body.dark-mode .contact-form button[type="submit"] {
+    box-shadow: var(--box-shadow-soft);
+}
+
+.contact-form button[type="submit"]:hover,
+.contact-form button[type="submit"]:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-hover);
+    background-position: 100% 0;
+}
+
+body.dark-mode .contact-form button[type="submit"]:hover,
+body.dark-mode .contact-form button[type="submit"]:focus-visible {
+    box-shadow: var(--box-shadow-hover);
+}
+
+.contact-form button[type="submit"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: var(--box-shadow-soft);
+}
+
+/* ---=== Status Message Styling ===--- */
+#form-status {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    border: 1px solid transparent;
+    min-height: 1.5em;
+    opacity: 0;
+    transform: translateY(10px); /* Slide-in effect */
+    transition: opacity var(--transition-speed) var(--transition-timing),
+                transform var(--transition-speed) var(--transition-timing),
+                background-color var(--transition-speed) var(--transition-timing),
+                border-color var(--transition-speed) var(--transition-timing),
+                color var(--transition-speed) var(--transition-timing);
+}
+
+#form-status.processing,
+#form-status.success,
+#form-status.error {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#form-status.processing {
+    background: var(--processing-bg-light);
+    color: var(--processing-text-light);
+    border-color: var(--processing-border-light);
+}
+
+body.dark-mode #form-status.processing {
+    background: var(--processing-bg-dark);
+    color: var(--processing-text-dark);
+    border-color: var(--processing-border-dark);
+}
+
+#form-status.success {
+    background: var(--success-bg);
+    color: var(--success-text);
+    border-color: var(--success-border);
+}
+
+#form-status.error {
+    background: var(--error-bg);
+    color: var(--error-text);
+    border-color: var(--error-border);
+}
+
+/* ---=== Responsive Design ===--- */
+@media (max-width: 992px) {
+    .contact-content {
+        grid-template-columns: 1fr; /* Stack vertically */
+        gap: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-content {
+        padding: 32px 16px;
+    }
+    .contact-info {
+        padding: 20px;
+    }
+    .contact-info h2.section-title {
+        font-size: 2rem;
+    }
+    .contact-form {
+        padding: 24px;
+    }
+    .contact-form h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-content {
+        padding: 24px 12px;
+    }
+    .contact-info h2.section-title {
+        font-size: 1.75rem;
+    }
+    .contact-item {
+        padding: 10px;
+        gap: 12px;
+    }
+    .contact-item i {
+        font-size: 1.25rem;
+        width: 24px;
+    }
+    .contact-form {
+        padding: 20px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+        padding: 12px 14px;
+        font-size: 0.9rem;
+    }
+    .contact-form button[type="submit"] {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+    }
+    #form-status {
+        font-size: 0.85rem;
+        padding: 10px 12px;
+    }
+}
+
+/* ---=== Visually Hidden Class ===--- */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    white-space: nowrap;
+}
+
+/* ---=== Status Message Styling ===--- */
+#form-status {
+    margin-top: 16px;
+    padding: 12px 16px; /* Ensures space around text */
+    border-radius: var(--border-radius-sm);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    border: 1px solid transparent;
+    /* Removed min-height: 1.5em; - Let height be determined by content + padding */
+    opacity: 0;
+    transform: translateY(10px); /* Start slightly lower for slide-in */
+    transition: opacity var(--transition-speed) var(--transition-timing),
+                transform var(--transition-speed) var(--transition-timing),
+                background-color var(--transition-speed) var(--transition-timing),
+                border-color var(--transition-speed) var(--transition-timing),
+                color var(--transition-speed) var(--transition-timing);
+    /* Ensure visibility isn't hidden if content overflows somehow (unlikely but safe) */
+    overflow: visible;
+    /* Explicitly allow height to adjust */
+    height: auto;
+}
+
+#form-status.processing,
+#form-status.success,
+#form-status.error {
+    opacity: 1;
+    transform: translateY(0); /* Move to final position */
+}
+
+#form-status.processing {
+    background: var(--processing-bg-light);
+    color: var(--processing-text-light);
+    border-color: var(--processing-border-light);
+}
+
+body.dark-mode #form-status.processing {
+    background: var(--processing-bg-dark);
+    color: var(--processing-text-dark);
+    border-color: var(--processing-border-dark);
+}
+
+#form-status.success {
+    background: var(--success-bg);
+    color: var(--success-text);
+    border-color: var(--success-border);
+}
+
+#form-status.error {
+    background: var(--error-bg);
+    color: var(--error-text);
+    border-color: var(--error-border);
+}
+
+/* Adjust padding for smaller screens if needed */
+@media (max-width: 480px) {
+    #form-status {
+        font-size: 0.85rem;
+        padding: 10px 12px; /* Slightly reduced padding */
+    }
+    /* Add other 480px rules here */
+    .contact-content {
+        padding: 24px 12px;
+    }
+    .contact-info h2.section-title {
+        font-size: 1.75rem;
+    }
+    .contact-item {
+        padding: 10px;
+        gap: 12px;
+    }
+    .contact-item i {
+        font-size: 1.25rem;
+        width: 24px;
+    }
+    .contact-form {
+        padding: 20px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+        padding: 12px 14px;
+        font-size: 0.9rem;
+    }
+    .contact-form button[type="submit"] {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Shibi Chakravarthi, an Embedded Systems Developer specializing in building innovative hardware and software solutions.">
+    <title>Shibi Chakravarthi - Embedded Systems Developer</title>
+    <link rel="icon" href="shibi (2).jpeg" type="image/jpeg"> <!-- Changed type to jpeg based on filename -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css"> <!-- Main Styles (Ensure .visually-hidden is defined here) -->
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="skills.css">
+    <link rel="stylesheet" href="projects.css">
+    <link rel="stylesheet" href="education.css">
+    <link rel="stylesheet" href="contact.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Ensure .visually-hidden class is defined in styles.css -->
+    <!-- Example in styles.css:
+    .visually-hidden {
+        position: absolute !important; /* Use !important only if necessary to override */
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+        white-space: nowrap; /* Prevent line breaks */
+        border: 0;
+        margin: -1px;
+        padding: 0;
+    }
+    -->
+
+</head>
+<body>
+
+    <!-- ==================== Navigation ==================== -->
+    <nav class="navbar">
+        <a href="#about" class="logo">Shibi</a>
+        <ul class="nav-links" id="nav-links"> <!-- Added ID for aria-controls -->
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="controls-container">
+            <button type="button" class="theme-toggle" aria-label="Toggle Dark/Light Mode" aria-pressed="false">
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="hamburger" aria-label="Toggle Menu" aria-expanded="false" aria-controls="nav-links">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==================== Main Content ==================== -->
+    <main>
+
+        <!-- ==================== About Section ==================== -->
+        <section id="about" class="section" aria-labelledby="about-heading">
+            <div class="about-content">
+                <div class="about-text">
+                    <header>
+                        <h1 id="about-heading">Hi, I'm Shibi Chakravarthi</h1>
+                        <h2 class="subtitle">Embedded Systems Developer</h2>
+                    </header>
+                    <!-- ****** UPDATED BIO ****** -->
+                    <p>I'm passionate about solving analytical challenges with creative and technical expertise. My curiosity drives me to innovate in embedded systems, crafting solutions for IoT, vehicle diagnostics, and more.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/shibi-chakravarthi" target="_blank" rel="noopener noreferrer" aria-label="Shibi Chakravarthi's LinkedIn Profile"><i class="fab fa-linkedin" aria-hidden="true"></i><span class="visually-hidden">LinkedIn</span></a>
+                        <a href="mailto:shibichakravarthi99@gmail.com" aria-label="Send Email to Shibi Chakravarthi"><i class="fas fa-envelope" aria-hidden="true"></i><span class="visually-hidden">Email</span></a>
+                        <a href="https://wa.me/919113533636" target="_blank" rel="noopener noreferrer" aria-label="Chat with Shibi Chakravarthi on WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i><span class="visually-hidden">WhatsApp</span></a>
+                        <!-- <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"><i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a> -->
+                    </div>
+                    <div class="about-buttons">
+                        <a href="#contact" class="cta-button"><i class="fas fa-envelope" aria-hidden="true"></i> Contact Me</a>
+                        <a href="Shibi_Chakravarthi_A_U_RESUME.pdf" class="cta-button secondary" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt" aria-hidden="true"></i> View Resume</a>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="shibi (2).jpeg" alt="Profile picture of Shibi Chakravarthi">
+                </div>
+            </div>
+            <a href="#skills" class="scroll-arrow" aria-label="Scroll to Skills Section">
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </a>
+        </section>
+
+        <!-- ==================== Skills Section ==================== -->
+        <section id="skills" class="section" aria-labelledby="skills-heading">
+            <h2 id="skills-heading" class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skills-marquee" aria-label="Scrolling list of technical skills">
+                    <div class="skills-track">
+                        <!-- Skill Items (Set 1) -->
+                        <div class="skill-item"><i class="fa-brands fa-cuttlefish" aria-hidden="true"></i><p>C Programming</p></div>
+                        <div class="skill-item"><i class="fab fa-python" aria-hidden="true"></i><p>Python</p></div>
+                        <div class="skill-item"><i class="fas fa-microchip" aria-hidden="true"></i><p>Embedded C</p></div>
+                        <div class="skill-item"><i class="fas fa-bolt" aria-hidden="true"></i><p>Circuit Design</p></div>
+                        <div class="skill-item"><i class="fas fa-network-wired" aria-hidden="true"></i><p>IoT Protocols</p></div>
+                        <div class="skill-item"><i class="fab fa-html5" aria-hidden="true"></i><p>HTML5</p></div>
+                        <div class="skill-item"><i class="fab fa-css3-alt" aria-hidden="true"></i><p>CSS3</p></div>
+                        <!-- Skill Items (Set 2 - Duplicate for smooth scroll) -->
+                        <div class="skill-item"><i class="fa-brands fa-cuttlefish" aria-hidden="true"></i><p>C Programming</p></div>
+                        <div class="skill-item"><i class="fab fa-python" aria-hidden="true"></i><p>Python</p></div>
+                        <div class="skill-item"><i class="fas fa-microchip" aria-hidden="true"></i><p>Embedded C</p></div>
+                        <div class="skill-item"><i class="fas fa-bolt" aria-hidden="true"></i><p>Circuit Design</p></div>
+                        <div class="skill-item"><i class="fas fa-network-wired" aria-hidden="true"></i><p>IoT Protocols</p></div>
+                        <div class="skill-item"><i class="fab fa-html5" aria-hidden="true"></i><p>HTML5</p></div>
+                        <div class="skill-item"><i class="fab fa-css3-alt" aria-hidden="true"></i><p>CSS3</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== Projects Section (No Images) ==================== -->
+        <section id="projects" class="section" aria-labelledby="projects-heading">
+            <h2 id="projects-heading" class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <!-- Project Item 1 -->
+                <article class="project-item" aria-labelledby="project1-title">
+                    <!-- Removed project image container -->
+                    <div class="project-content">
+                        <h3 id="project1-title">CAN-based Vehicle Diagnostics Tool</h3>
+                        <p>Developed a real-time vehicle monitoring system using an STM32 microcontroller and CAN bus interface. Successfully displayed engine RPM, speed, and other parameters on an LCD. Technologies: Embedded C, STM32F3, CAN protocol, LCD interfacing.</p>
+                        <div class="project-links">
+                            <!-- Example: <a href="#" aria-label="View source code for CAN Diagnostics Tool">GitHub</a> -->
+                            <!-- Example: <a href="#" aria-label="View live demo of CAN Diagnostics Tool">Demo</a> -->
+                        </div>
+                    </div>
+                </article>
+                <!-- Project Item 2 -->
+                <article class="project-item" aria-labelledby="project2-title">
+                    <div class="project-content">
+                        <h3 id="project2-title">Automatic Car Wiper Using IoT</h3>
+                        <p>Engineered an intelligent wiper system employing rain and dust sensors. The system automatically adjusts wiper speed and activates water spray for optimal visibility. Technologies: Arduino/ESP32, Sensors, IoT Platform, C++.</p>
+                        <div class="project-links">
+                             <!-- Add links if available -->
+                        </div>
+                    </div>
+                </article>
+                <!-- Project Item 3 -->
+                <article class="project-item" aria-labelledby="project3-title">
+                    <div class="project-content">
+                        <h3 id="project3-title">Vehicle Parking Management System</h3>
+                        <p>Created a C-based backend integrated with a simple web application for real-time parking slot monitoring. Aimed at reducing search time and optimizing parking space utilization. Technologies: C, Basic Web Dev.</p>
+                         <div class="project-links">
+                             <!-- Add links if available -->
+                        </div>
+                    </div>
+                </article>
+                <!-- Add more project items as needed -->
+            </div>
+        </section>
+
+        <!-- ==================== Education Section ==================== -->
+        <section id="education" class="section" aria-labelledby="education-heading">
+            <h2 id="education-heading" class="section-title">Education</h2>
+            <div class="timeline">
+                <!-- Timeline Item 1: B.E. -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" aria-hidden="true"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <img src="pes mandya.webp" alt="P.E.S College of Engineering Logo" class="institution-logo">
+                            <div class="timeline-header-text">
+                                <h3>P.E.S College of Engineering, Mandya</h3>
+                                <p class="course-name">B.E. - Electronics & Communication Engineering</p>
+                                <p class="date"><time datetime="2021">2021</time> - <time datetime="2025">2025</time></p>
+                            </div>
+                        </div>
+                        <div class="description">
+                            <p>Pursued a comprehensive curriculum in Embedded Systems, IoT, Digital Electronics, and Microprocessors, focusing on practical innovation.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Timeline Item 2: PU -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" aria-hidden="true"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <img src="alike_campuses_logo.jpg" alt="Sri Sathya Sai Loka Seva PU College Logo" class="institution-logo">
+                            <div class="timeline-header-text">
+                                <h3>Sri Sathya Sai Loka Seva PU College, Alike</h3>
+                                <p class="course-name">Pre-University - PCMB</p>
+                                <p class="date"><time datetime="2019">2019</time> - <time datetime="2021">2021</time></p>
+                            </div>
+                        </div>
+                        <div class="description">
+                            <p>Studied Physics, Chemistry, Mathematics, and Biology, building a strong scientific foundation.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Timeline Item 3: School -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" aria-hidden="true"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <img src="alike_campuses_logo.jpg" alt="Sri Sathya Sai Loka Seva Vidhyakendra Logo" class="institution-logo">
+                            <div class="timeline-header-text">
+                                <h3>Sri Sathya Sai Loka Seva Vidhyakendra, Alike</h3>
+                                <p class="course-name">10th Standard - CBSE</p>
+                                <p class="date"><time datetime="2019">2019</time></p>
+                            </div>
+                        </div>
+                         <div class="description">
+                            <p>Established a solid academic base focused on discipline and holistic education.</p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End Timeline -->
+        </section>
+
+        <!-- ==================== Contact Section ==================== -->
+        <section id="contact" class="section" aria-labelledby="contact-heading">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2 id="contact-heading" class="section-title">Get In Touch</h2>
+                    <ul class="contact-methods">
+                        <li>
+                            <a href="mailto:shibichakravarthi99@gmail.com" class="contact-item">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                                <span>Mail</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/919113533636" target="_blank" rel="noopener noreferrer" class="contact-item">
+                                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/shibi-chakravarthi" target="_blank" rel="noopener noreferrer" class="contact-item">
+                                <i class="fab fa-linkedin" aria-hidden="true"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Me a Message</h3>
+                    <form id="contactForm" action="https://formspree.io/f/mzzewpya" method="POST" novalidate>
+                        <div class="form-group">
+                             <label for="name" class="visually-hidden">Your Name</label>
+                             <input type="text" id="name" name="name" placeholder="Your Name" required autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                             <label for="email" class="visually-hidden">Your Email</label>
+                             <input type="email" id="email" name="_replyto" placeholder="Your Email" required autocomplete="email">
+                        </div>
+                        <div class="form-group">
+                             <label for="message" class="visually-hidden">Your Message</label>
+                             <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <!-- ****** UPDATED BUTTON ****** -->
+                        <button type="submit" class="cta-button">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i> Send Message
+                        </button>
+                        <p id="form-status" class="form-status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== Footer ==================== -->
+<footer>
+    <!-- ****** MOVED SOCIAL LINKS ABOVE COPYRIGHT TEXT ****** -->
+    <div class="footer-social-links">
+        <a href="https://www.linkedin.com/in/shibi-chakravarthi" target="_blank" rel="noopener noreferrer" aria-label="Shibi Chakravarthi's LinkedIn Profile">
+            <i class="fab fa-linkedin" aria-hidden="true"></i><span class="visually-hidden">LinkedIn</span>
+        </a>
+        <a href="mailto:shibichakravarthi99@gmail.com" aria-label="Send Email to Shibi Chakravarthi">
+            <i class="fas fa-envelope" aria-hidden="true"></i><span class="visually-hidden">Email</span>
+        </a>
+        <a href="https://wa.me/919113533636" target="_blank" rel="noopener noreferrer" aria-label="Chat with Shibi Chakravarthi on WhatsApp">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i><span class="visually-hidden">WhatsApp</span>
+        </a>
+        <!-- <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+            <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">GitHub</span>
+        </a> -->
+    </div>
+
+    <p>© <span id="currentYear">YYYY</span> Shibi Chakravarthi. All Rights Reserved.</p>
+
+    <!-- ****** INLINE FOOTER CSS ****** -->
+    <style>
+        .footer-social-links {
+            text-align: center;
+            margin-top: 15px;
+            padding-bottom: 10px;
+        }
+        .footer-social-links a {
+            color: var(--text-color);
+            font-size: 1.4rem;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+        .footer-social-links a:hover,
+        .footer-social-links a:focus {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        footer p {
+            text-align: center;
+        }
+    </style>
+</footer>
+
+
+    <!-- ==================== JavaScript ==================== -->
+    <script src="script.js"></script>
+    <script>
+        // Simple script to set the current year in the footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
